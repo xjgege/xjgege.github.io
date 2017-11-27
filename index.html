@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CS171 - Final Project</title>
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/leaflet.css">
+  <link rel="stylesheet" href="css/MarkerCluster.css">
+  <link rel="stylesheet" href="css/MarkerCluster.Default.css">
+  <link rel="stylesheet" href="css/sweetalert.css">
+  <script src="http://d3js.org/d3.v2.js"></script>
+  <link rel="stylesheet" href="css/d3.slider.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+
+</head>
+
+
+<body>
+<div id="loading"></div>
+<nav class="navbar navbar-findcond navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Seeing Through the Fogg</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="#">About <span class="sr-only">(current)</span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Browse<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#region">Region</a></li>
+            <li><a href="#time">Time Period</a></li>
+            <li><a href="#color">Color</a></li>
+          </ul>
+        </li>
+        <li class="active"><a href="#team">Team <span class="sr-only">(current)</span></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-fw fa-bell-o"></i> My Gallery <span id="count" class="badge">0</span></a>
+          <ul id="mygallery" class="dropdown-menu" role="menu">
+            <li><a class="testPopup" href="#">View Gallery</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="page">
+
+  <br>
+
+  <!-- Introductory Story -->
+  <div id="storyBox" class="story">
+    <div id="story"></div>
+    <p id="tagline">Pieces in the Harvard Art Museum's collection from 1800 to today.</p>
+    <p id="problemText">
+      The Harvard Art Museum, with its vast collection of works, serves as an ideal teaching tool for students, however, its very strength in size presents a daunting task when it comes to visualizing its capabilities. <br><br>
+
+
+      Ever wondered what regions are the root to saturations of art? Curious about how to anchor pieces by time and compare them with one another? Have you ever thought about finding works by their predominant color? <br><br>
+
+
+      Scratch your head no more! Our website presents users with three visual tools to peruse the Harvard Art Museum's collection in an interactive, colorful, and digestible way!<br>
+    </p>
+  </div>
+
+  <br>
+    <hr class="style1">
+  <br>
+
+  <!-- Visualizations -->
+
+  <div class="container">
+    <div id="region" class="row">
+      <h2 class="title">Explore Art by Region</h2>
+      <div class="visDescrip">Zoom into the map to explore art by location. Click on a cluster to see all of the art pieces in the collection created in that place. Click the dots to view art and add it to your gallery.</div>
+      <div id="map"></div>
+    </div>
+
+    <br>
+      <hr class="style1">
+    <br>
+
+    <div id="time" class="row">
+      <h2 class="title">Explore Art by Century</h2>
+      <div class="visDescrip">Brush the top timeline to explore a time period of interest. Use the drop down boxes to filter by medium. Click the dots to view art and add it to your gallery.</div>
+      <div id="timelineBtns">
+        <form action="">
+            <input type="radio" name="timeBtn" value="all" onclick="updateTimeline()" checked="checked"> All  
+            <input type="radio" name="timeBtn" value="Paintings" onclick="updateTimeline()"> Paintings  
+            <input type="radio" name="timeBtn" value="Prints" onclick="updateTimeline()"> Prints   
+            <input type="radio" name="timeBtn" value="Drawings" onclick="updateTimeline()"> Drawings  
+            <input type="radio" name="timeBtn" value="Photographs" onclick="updateTimeline()"> Photographs
+            <input type="radio" name="timeBtn" value="Sculpture" onclick="updateTimeline()"> Sculpture  
+            <input type="radio" name="timeBtn" value="Other" onclick="updateTimeline()"> Other 
+        </form>
+      </div>
+      <div id="timeline"></div>
+      <div id="timeline_brushed"></div>
+      <div id="timecard"></div>
+    </div>
+
+    <br>
+      <hr class="style1">
+    <br>
+
+    <div id="color" class="row">
+      <h2 class="title">Explore Art by Color</h2>
+      <div class="visDescrip">Move through the color spectrum to view art pieces by predominant color value. Click on a bar to view art and add it to your gallery.</div>
+        <br>
+        
+        <div class="row">
+          <div class="col-sm-3 RedGroup">
+            <h2 id="ColorTitle">Red</h2>
+            <div id="RedCount"></div>
+            <div id="RedImage"></div>
+            <div id="RedInfo"></div>
+          </div>
+          <div class="col-sm-9">
+          <div id="Red"></div>  
+          </div>
+      </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <h2 id="ColorTitle">Orange</h2>
+            <div id="OrangeCount"></div>
+            <div id="OrangeImage"></div>
+            <div id="OrangeInfo"></div>
+          </div>
+          <div class="col-sm-9">
+          <div id="Orange"></div> 
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-3">
+            <h2 id="ColorTitle">Yellow</h2>
+            <div id="YellowCount"></div>
+            <div id="YellowImage"></div>
+            <div id="YellowInfo"></div>
+          </div>
+          <div class="col-sm-9">
+          <div id="Yellow"></div> 
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-3">
+            <h2 id="ColorTitle">Green</h2>
+            <div id="GreenCount"></div>
+            <div id="GreenImage"></div>
+            <div id="GreenInfo"></div>
+          </div>
+          <div class="col-sm-9">
+          <div id="Green"></div>  
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-sm-3">
+            <h2 id="ColorTitle">Blue</h2>
+            <div id="BlueCount"></div>
+            <div id="BlueImage"></div>
+            <div id="BlueInfo"></div>
+          </div>
+          <div class="col-sm-9">
+          <div id="Blue"></div> 
+          </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<br>
+  <hr class="style1">
+<br>
+
+<div id="team" class="story">
+   <h2 class="title">Meet Our Team</h2>
+   <div class="container">
+      <div class="col-md-4">
+            <img class="img-circle" src="img/katherine.jpg">
+            <h5>Katherine Harrison</h5>
+         <p>
+         Sophomore, Winthrop House <br>
+         Katherine studies computational and cognitive<br>
+            neuroscience with a secondary in computer science.<br>
+         She has a blog, <a href="ivykat.squarespace.com"> ivykat.squarespace.com</a>, where <br>
+            she shares her love for fashion, food, and photography, and writes
+          about other beautiful things in the world around her.
+         </p>
+      </div>
+
+          <div class="col-md-4">
+                <img class="img-circle" src="img/maria.jpg">
+             <h5>Maria McLaughlin</h5>
+             <p>
+             Junior, Dunster House <br>
+             Maria studies computer science.<br>
+             In her spare time, she teaches <br> computer science
+             to middle-schoolers <br> and plans events for her sorority sisters.
+          </div>
+
+          <div class="col-md-4">
+                <img class="img-circle" src="img/maia.jpg">
+                <h5>Maia Suazo-Maler</h5>
+             <p>
+             Sophomore, Winthrop House <br>
+             Maia jointly studies the history of art and architecture<br>
+             and computer science.  She serves as a student board member for the Harvard Art Museums.
+             She has a blog,<br> <a href="modandbean.com"> modandbean.com</a>, where
+             she shares her passion for photography, people, and parlance. </p>
+          </div>
+       </div>
+   </div>
+</div>
+
+  <!-- Load JS libraries -->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/queue.v1.min.js"></script>
+  <script src="js/queue.v1.min.js"></script>
+  <script src="js/topojson.js"></script>
+  <script src="js/d3.min.js"></script>
+  <script src="js/d3.tip.js"></script>
+  <script src="js/leaflet.js"></script>
+  <script src="js/leaflet.markercluster.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="js/d3.slider.js"></script>
+  <script src="js/sweetalert-dev.js"></script>
+  <!-- Magnific Popup core JS file -->
+  <script src="js/jquery.magnific-popup.min.js"></script>
+
+  <!-- Choropleth and second visualization -->
+  <script src="js/main.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/timeline.js"></script>
+  <script src="js/timeline_brushed.js"></script>
+  <script src="js/color.js"></script>
+  <script src="js/story.js"></script>
+  
+</body>
+</html>
