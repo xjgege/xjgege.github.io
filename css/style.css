@@ -1,0 +1,275 @@
+/* General */
+
+body {
+    font-family: avenir;
+}
+
+hr {
+  width: 700px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 5%;
+    margin-top: 2%;
+}
+
+.visDescrip {
+  text-align: center;
+  font-family: avenir;
+  font-size: 17px;
+  margin-bottom: 3%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.tooltip {
+  font-family: avenir;
+}
+
+/* Introduction */
+
+.story {
+  padding-top: 5%;
+  text-align: center;
+  fill: #555;
+}
+
+.txt {
+  font-family: avenir;
+  text-align: center;
+  font-size: 150px;
+}
+
+#tagline {
+  font-size: 27px;
+  fill: #555;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+#problemText {
+  padding-top: 7px;
+  padding-left: 25%;
+  padding-right: 25%;
+  text-align: center;
+  font-size: 15px;
+  fill: #555;
+}
+
+/* Color Visual */
+
+.colorImage {
+  width: 150px;
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+#color {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#ColorTitle {
+  font-family: avenir;
+  text-align: center;
+}
+
+#RedCount #OrangeCount #YellowCount #GreenCount #BlueCount{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.RedGroup .OrangeGroup .YellowGroup .GreenGroup .BlueGroup {
+  font-family: avenir;
+  text-align: left;
+}
+
+.RedInfo .OrangeInfo .YellowInfo .GreenInfo .BlueInfo {
+  font-family: avenir;
+  font-style: italic;
+}
+
+.selectBoxes {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#radioBtns {
+  text-align: center;
+  padding-right: 5px;
+}
+
+#btn-info {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn {
+  margin-top: 3px;
+}
+
+/* Timeline Visual */
+
+#timeline #timeline_brushed #timecard {
+  font-family: avenir;
+}
+
+.axis line,
+.axis path {
+    fill: none;
+    stroke: #555;
+    shape-rendering: crispEdges;
+}
+
+.tick text {
+    font-family: avenir;
+    font-size: 11px;
+    fill: #555;
+}
+
+path {
+    fill: black;
+    stroke: white;
+}
+
+.brush .extent {
+    stroke: #fff;
+    fill-opacity: .125;
+    shape-rendering: crispEdges;
+}
+
+#timelineBtns {
+  text-align: center;
+  padding-right: 5px;
+}
+
+table {
+  margin: 0 auto;
+  background-color: #f6f6f6;
+}
+
+.alnleft { 
+  text-align: left; 
+}
+
+#radioBtns{
+  text-align: center;
+  padding-right: 5px;
+}
+
+table th , table td{
+  border-bottom: .5px white solid;
+  opacity: 0.8;
+  padding: 10px 10px 5px 5px;
+  background-color: #f6f6f6;
+  font-size: 12px;
+}
+
+
+img{
+  height: auto;
+  width: auto;
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type=checkbox], input[type=radio] {
+    margin-left: 10px;
+}
+
+/* Map Visual */
+
+.country {
+    fill: #ff9999;
+}
+
+#map {
+    width: 75%;
+    height: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    filter: gray; /* IE6-9 */
+    filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
+    -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+}
+
+#map:hover {
+  filter: none;
+  -webkit-filter: grayscale(0);
+}
+
+:target:before {
+  content:"";
+  display:block;
+  height:60px; /* fixed header height*/
+  margin:-30px 0 0; /* negative fixed header height */
+}
+
+.dropPadding{
+    padding-top: 2%;
+}
+
+.img-circle {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+
+.column-left{ float: left; width: 33%; }
+.column-right{ float: right; width: 33%; }
+.column-center{ display: inline-block; width: 33%; }
+
+
+nav.navbar-findcond { background: #fff; border-color: #ccc; box-shadow: 0 0 2px 0 #ccc; }
+nav.navbar-findcond a { color: #555; }
+nav.navbar-findcond ul.navbar-nav a { color: #555; border-style: solid; border-width: 0 0 2px 0; border-color: #fff; }
+nav.navbar-findcond ul.navbar-nav a:hover,
+nav.navbar-findcond ul.navbar-nav a:visited,
+nav.navbar-findcond ul.navbar-nav a:focus,
+nav.navbar-findcond ul.navbar-nav a:active { background: #fff; }
+nav.navbar-findcond ul.navbar-nav a:hover { border-color: #555; }
+nav.navbar-findcond li.divider { background: #ccc; }
+nav.navbar-findcond button.navbar-toggle { background: #555; border-radius: 2px; }
+nav.navbar-findcond button.navbar-toggle:hover { background: #999; }
+nav.navbar-findcond button.navbar-toggle > span.icon-bar { background: #fff; }
+nav.navbar-findcond ul.dropdown-menu { border: 0; background: #fff; border-radius: 4px; margin: 4px 0; box-shadow: 0 0 4px 0 #ccc; }
+nav.navbar-findcond ul.dropdown-menu > li > a { color: #444; }
+nav.navbar-findcond ul.dropdown-menu > li > a:hover { background: #555; color: #fff; }
+nav.navbar-findcond span.badge { background: #555; font-weight: normal; font-size: 11px; margin: 0 4px; }
+nav.navbar-findcond span.badge.new { background: #555; color: #fff; }
+
+/* Popup */
+
+table {
+  margin: 0 auto;
+}
+
+.alnleft { 
+  text-align: left; 
+}
+
+.white-popup {
+    position: relative;
+    background: #FFF;
+    padding: 20px;
+    width: auto;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.selected {
+  background-color: #93DB70;
+  border-color: #93DB70;
+}
+
+.selected:hover {
+  background-color: #93DB70;
+  border-color: #93DB70;
+}
+
